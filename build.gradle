@@ -3,7 +3,10 @@ import org.apache.tools.ant.filters.ReplaceTokens
 apply plugin: 'java'
 
 group = 'me.ste.stevesseries'
-version = '1.0'
+version = "0"
+if(System.env.BUILD_NUMBER != null) {
+    version = "" + System.env.BUILD_NUMBER
+}
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
