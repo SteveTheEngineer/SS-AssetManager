@@ -1,0 +1,6 @@
+name: SS-AssetManager
+version: @version@
+main: me.ste.stevesseries.assetmanager.AssetManager
+api-version: 1.16
+authors: [SteveTheEngineer]
+description: A plugin that merges different assets into one resource pack

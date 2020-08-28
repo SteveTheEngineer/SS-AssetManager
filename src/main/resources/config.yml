@@ -1,0 +1,19 @@
+#Webserver settings
+webserver:
+  #Webserver port
+  port: 25566
+  #External url that the web server is available on
+  url: http://localhost:25566
+
+#Force resource pack to be downloaded
+force: true
+
+#Pack meta (put icon.png into this folder to set the pack icon)
+pack:
+  #Pack format
+  format: 6
+  #Pack description, color codes are supported
+  description: Server resources
+
+customModelDataAllocations: {}
+newCustomModelDataIds: {}
