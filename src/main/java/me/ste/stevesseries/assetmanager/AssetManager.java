@@ -2,6 +2,7 @@ package me.ste.stevesseries.assetmanager;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
+import com.google.common.io.ByteStreams;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.sun.net.httpserver.Headers;
@@ -13,7 +14,6 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-import sun.misc.IOUtils;
 
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
@@ -77,7 +77,7 @@ public final class AssetManager extends JavaPlugin {
                         }
                         if(entry.getName().startsWith("assets/") && !entry.isDirectory()) {
                             try {
-                                this.assetMap.put(entry.getName().substring(7), IOUtils.readAllBytes(Objects.requireNonNull(plugin.getResource(entry.getName()))));
+                                this.assetMap.put(entry.getName().substring(7), ByteStreams.toByteArray(Objects.requireNonNull(plugin.getResource(entry.getName()))));
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -103,7 +103,7 @@ public final class AssetManager extends JavaPlugin {
                         zipFile.stream().forEach(entry -> {
                             if(entry.getName().startsWith("assets/") && !entry.isDirectory()) {
                                 try {
-                                    this.assetMap.put(entry.getName().substring(7), IOUtils.readAllBytes(zipFile.getInputStream(entry)));
+                                    this.assetMap.put(entry.getName().substring(7), ByteStreams.toByteArray(zipFile.getInputStream(entry)));
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
@@ -147,7 +147,7 @@ public final class AssetManager extends JavaPlugin {
                 zipFile.stream().forEach(entry -> {
                     if(entry.getName().startsWith("assets/") && !entry.isDirectory()) {
                         try {
-                            this.assetMap.put(entry.getName().substring(7), IOUtils.readAllBytes(zipFile.getInputStream(entry)));
+                            this.assetMap.put(entry.getName().substring(7), ByteStreams.toByteArray(zipFile.getInputStream(entry)));
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

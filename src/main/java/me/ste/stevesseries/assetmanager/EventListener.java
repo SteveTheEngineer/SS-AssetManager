@@ -33,8 +33,8 @@ public class EventListener implements Listener {
     public void onResourcePackStatus(PlayerResourcePackStatusEvent event) {
         if(event.getStatus() == PlayerResourcePackStatusEvent.Status.DECLINED && this.plugin.getConfig().getBoolean("force")) {
             event.getPlayer().kickPlayer("You must accept the resource pack");
-        } else if(event.getStatus() == PlayerResourcePackStatusEvent.Status.FAILED_DOWNLOAD && this.plugin.getConfig().getBoolean("force")) {
-            event.getPlayer().kickPlayer("Failed to download the resource pack");
+        } else if(event.getStatus() == PlayerResourcePackStatusEvent.Status.FAILED_DOWNLOAD) {
+            event.getPlayer().setResourcePack(this.plugin.getResourcePackURL(), this.plugin.getResourcesHash());
         } else if(event.getStatus() == PlayerResourcePackStatusEvent.Status.SUCCESSFULLY_LOADED) {
             this.resourcePackInstalled.add(event.getPlayer().getUniqueId());
         }
