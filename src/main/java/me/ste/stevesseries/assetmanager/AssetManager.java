@@ -365,7 +365,7 @@ public final class AssetManager extends JavaPlugin {
     }
 
     /**
-     * @return Asset map, path -> data
+     * @return Asset map, path -&gt; data
      */
     public Map<String, byte[]> getAssetMap() {
         return this.assetMap;
